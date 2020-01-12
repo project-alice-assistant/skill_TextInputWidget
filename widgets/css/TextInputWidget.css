@@ -3,6 +3,7 @@
 	color: #d1d1d1;
 	padding: 5px;
 	box-sizing: border-box;
+	min-width: 265px;
 	}
 #TextInputWidget_query {
 	display:none;
@@ -15,4 +16,21 @@
 	color: #d1d1d1;
 	padding: 5px;
 	box-sizing: border-box;
+}
+
+.TextInputWidget_butt:hover {
+    border: dotted 1px;
+}
+.TextInputWidget_butt {
+    margin: 1px;
+    width: 100%;
+    background-color: #343434;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: #d1d1d1;
+    font-size: 1.2em;
+    min-height: 25px;
+}
+.TextInputWidget_input {
+    margin: 1px;
 }

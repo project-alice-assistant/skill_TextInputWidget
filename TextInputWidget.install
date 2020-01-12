@@ -1,0 +1,10 @@
+{"name": "TextInputWidget",
+"version": "0.0.1",
+"author": "philipp2310",
+"maintainers": ["maxbachmann", "Psycho"],
+"desc": "Gives you a widget with direct text input for alice",
+"aliceMinVersion": "1.0.0-a5",
+"systemRequirements": [],
+"pipRequirements": [],
+"conditions": {"lang": ["en", "de", "fr"]}
+}

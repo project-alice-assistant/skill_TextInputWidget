@@ -18,9 +18,9 @@ function login(user, pin) {
 	$.ajax(settings).done(function (response) {
 	  json = eval("(" + response + ")")
 	  token = json.apiToken;
-	  let divlogin = document.getElementById("TextWidget_login");
+	  let divlogin = document.getElementById("TextInputWidget_login");
 	  divlogin.style.display = "none";
-	  let divquery = document.getElementById("TextWidget_query");
+	  let divquery = document.getElementById("TextInputWidget_query");
 	  divquery.style.display = "block";
 	});
 
@@ -54,9 +54,9 @@ function doLogin(){
 }
 function doLogout(){
 	token = ""
-	let login = document.getElementById("TextWidget_login");
+	let login = document.getElementById("TextInputWidget_login");
 	login.style.display = "block";
-	let divquery = document.getElementById("TextWidget_query");
+	let divquery = document.getElementById("TextInputWidget_query");
 	divquery.style.display = "none";
 }
 function doProcess(){

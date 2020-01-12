@@ -3,9 +3,9 @@ import sqlite3
 from core.base.model.Widget import Widget
 
 
-class TextWidget(Widget):
+class TextInputWidget(Widget):
 
-	SIZE = 'w_large_wide'
+	SIZE = 'w_medium_wide'
 	OPTIONS: dict = dict()
 
 	def __init__(self, data: sqlite3.Row):

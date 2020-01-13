@@ -7,30 +7,30 @@
 	<div class="TextInputWidget_body">
 		<div id="TextInputWidget_login">
 			<div>
-				Please identify yourself
+				{{ lang.identify }}
 			</div>
 			<div>
-				<input type="text" class="TextInputWidget_input" id="username"/><label for="username">Username</label>
+				<input type="text" class="TextInputWidget_input" id="username"/><label for="username">{{ lang.username }}</label>
 			</div>
 			<div>
-				<input type="password" class="TextInputWidget_input" id="pin"/><label for="pin">Pin</label>
+				<input type="password" class="TextInputWidget_input" id="pin"/><label for="pin">{{ lang.pin }}</label>
 			</div>
 			<div>
-				<button class="TextInputWidget_butt" id="login">Login</button>
+				<button class="TextInputWidget_butt" id="login">{{ lang.login }}</button>
 			</div>
 		</div>
 		<div id="TextInputWidget_query">
 			<div>
-				<button class="TextInputWidget_butt" id="logout">Logout</button>
+				<button class="TextInputWidget_butt" id="logout">{{ lang.logout }}</button>
 			</div>
 			<div>
-				<input type="text" class="TextInputWidget_input" id="siteID" value="default" placeholder="default"/><label for="siteID">Site id</label>
+				<input type="text" class="TextInputWidget_input" id="siteID" value="default" placeholder="default"/><label for="siteID">{{ lang.siteId }}</label>
 			</div>
 			<div>
-				<input type="text" class="TextInputWidget_input" id="qry"/><label for="qry">Query</label>
+				<input type="text" class="TextInputWidget_input" id="qry"/><label for="qry">{{ lang.query }}</label>
 			</div>
 			<div>
-				<button class="TextInputWidget_butt" id="process">Send</button>
+				<button class="TextInputWidget_butt" id="process">{{ lang.send }}</button>
 			</div>
 		</div>
 	</div>

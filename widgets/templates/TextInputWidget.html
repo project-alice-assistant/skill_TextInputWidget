@@ -1,21 +1,23 @@
-	<div class="TextInputWidget" id="TextInputWidget">
-		<div class="widgetIcons">
-			<div class="widgetIcon">
-				<i class="fas fa-comment-dots" aria-hidden="true"></i>
-			</div>
-		</div>
-		<div class="TextInputWidget_body">
-			<div id="TextInputWidget_login">
-				Please identify yourself<br/>
-				<input class="TextInputWidget_input" id='username'/> Username<br/>
-				<input class="TextInputWidget_input" id='pin'/> Pin<br/>
-				<button class="TextInputWidget_butt" onclick="doLogin()">Login</button><br/>
-			</div>
-			<div id="TextInputWidget_query">
-				<button class="TextInputWidget_butt" onclick="doLogout()">Logout</button><br/>
-				<input class="TextInputWidget_input" id='siteID' value='default'/> SiteID<br/>
-				<input class="TextInputWidget_input" id='qry'/> Query<br/>
-				<button class="TextInputWidget_butt" onclick="doProcess()">OK</button>
-			<div/>
+<div class="TextInputWidget" id="TextInputWidget">
+	<div class="widgetIcons">
+		<div class="widgetIcon">
+			<i class="fas fa-comment-dots" aria-hidden="true"></i>
 		</div>
 	</div>
+	<div class="TextInputWidget_body">
+		<div id="TextInputWidget_login">
+			Please identify yourself<br/>
+			<input class="TextInputWidget_input" id='username'/> Username<br/>
+			<input class="TextInputWidget_input" id='pin'/> Pin<br/>
+			<button class="TextInputWidget_butt" onclick="doLogin()">Login</button>
+			<br/>
+		</div>
+		<div id="TextInputWidget_query">
+			<button class="TextInputWidget_butt" onclick="doLogout()">Logout</button>
+			<br/>
+			<input class="TextInputWidget_input" id='siteID' value='default'/> SiteID<br/>
+			<input class="TextInputWidget_input" id='qry'/> Query<br/>
+			<button class="TextInputWidget_butt" onclick="doProcess()">OK</button>
+		</div>
+	</div>
+</div>

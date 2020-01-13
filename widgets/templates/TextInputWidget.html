@@ -6,18 +6,32 @@
 	</div>
 	<div class="TextInputWidget_body">
 		<div id="TextInputWidget_login">
-			Please identify yourself<br/>
-			<input class="TextInputWidget_input" id='username'/> Username<br/>
-			<input class="TextInputWidget_input" id='pin'/> Pin<br/>
-			<button class="TextInputWidget_butt" onclick="doLogin()">Login</button>
-			<br/>
+			<div>
+				Please identify yourself
+			</div>
+			<div>
+				<input type="text" class="TextInputWidget_input" id="username"/><label for="username">Username</label>
+			</div>
+			<div>
+				<input type="password" class="TextInputWidget_input" id="pin"/><label for="pin">Pin</label>
+			</div>
+			<div>
+				<button class="TextInputWidget_butt" id="login">Login</button>
+			</div>
 		</div>
 		<div id="TextInputWidget_query">
-			<button class="TextInputWidget_butt" onclick="doLogout()">Logout</button>
-			<br/>
-			<input class="TextInputWidget_input" id='siteID' value='default'/> SiteID<br/>
-			<input class="TextInputWidget_input" id='qry'/> Query<br/>
-			<button class="TextInputWidget_butt" onclick="doProcess()">OK</button>
+			<div>
+				<button class="TextInputWidget_butt" id="logout">Logout</button>
+			</div>
+			<div>
+				<input type="text" class="TextInputWidget_input" id="siteID" value="default" placeholder="default"/><label for="siteID">Site id</label>
+			</div>
+			<div>
+				<input type="text" class="TextInputWidget_input" id="qry"/><label for="qry">Query</label>
+			</div>
+			<div>
+				<button class="TextInputWidget_butt" id="process">Send</button>
+			</div>
 		</div>
 	</div>
 </div>

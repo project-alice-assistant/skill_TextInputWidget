@@ -1,62 +1,75 @@
-let token = '';
-let ip = '';
+$(function () {
+	let token = '';
 
-function login(user, pin) {
-	let form = new FormData();
-	form.append('username', user);
-	form.append('pin', pin);
+	function login(user, pin) {
+		let form = new FormData();
+		form.append('username', user);
+		form.append('pin', pin);
 
-	let settings = {
-		'url': '/api/v1.0.1/login/',
-		'method': 'POST',
-		'timeout': 0,
-		'processData': false,
-		'mimeType': 'multipart/form-data',
-		'contentType': false,
-		'data': form
-	};
+		let settings = {
+			'url': '/api/v1.0.1/login/',
+			'method': 'POST',
+			'timeout': 0,
+			'processData': false,
+			'mimeType': 'multipart/form-data',
+			'contentType': false,
+			'data': form
+		};
 
-	$.ajax(settings).done(function (response) {
-		let json = eval('(' + response + ')');
-		token = json.apiToken;
-		$('#TextInputWidget_login').hide();
-		$('#TextInputWidget_query').show()
+		$.ajax(settings).done(function (response) {
+			let json = JSON.parse(response);
+			token = json['apiToken'];
+			$('#TextInputWidget_login').hide();
+			$('#TextInputWidget_query').show()
+		});
+
+	}
+
+	function process(token, siteID, qry) {
+		let form = new FormData();
+		form.append('query', qry);
+		form.append('siteId', siteID);
+		let settings = {
+			'url': '/api/v1.0.1/dialog/process/',
+			'method': 'POST',
+			'timeout': 0,
+			'headers': {
+				'auth': token
+			},
+			'processData': false,
+			'mimeType': 'multipart/form-data',
+			'contentType': false,
+			'data': form
+		};
+
+		$.ajax(settings).done(function (response) {
+			console.log(response);
+		});
+	}
+
+	$('#login').on('click', function () {
+		login($('#username').val(), $('#pin').val());
 	});
 
-}
-
-function process(token, siteID, qry) {
-	let form = new FormData();
-	form.append('query', qry);
-	form.append('siteId', siteID);
-	let settings = {
-		'url': '/api/v1.0.1/dialog/process/',
-		'method': 'POST',
-		'timeout': 0,
-		'headers': {
-			'auth': token
-		},
-		'processData': false,
-		'mimeType': 'multipart/form-data',
-		'contentType': false,
-		'data': form
-	};
-
-	$.ajax(settings).done(function (response) {
-		console.log(response);
+	$('#logout').on('click touchstart', function () {
+		token = '';
+		$('#TextInputWidget_login').show();
+		$('#TextInputWidget_query').hide();
 	});
-}
 
-function doLogin() {
-	login($('#username').val(), $('#pin').val());
-}
+	$('#process').on('click touchstart', function () {
+		process(token, $('#siteID').val(), $('#qry').val());
+	});
 
-function doLogout() {
-	token = '';
-	$('#TextInputWidget_login').show();
-	$('#TextInputWidget_query').hide();
-}
+	$('#qry').on('keydown', function(e) {
+		if (e.key == "Enter") {
+			process(token, $('#siteID').val(), $('#qry').val());
+		}
+	});
 
-function doProcess() {
-	process(token, $('#siteID').val(), $('#qry').val());
-}
+	$('#pin').on('keydown', function(e) {
+		if (e.key == "Enter") {
+			login($('#username').val(), $('#pin').val());
+		}
+	});
+});

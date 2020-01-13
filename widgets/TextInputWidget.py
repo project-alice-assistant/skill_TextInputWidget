@@ -1,10 +1,11 @@
 import sqlite3
 
 from core.base.model.Widget import Widget
+from core.base.model.widgetSizes import WidgetSizes
 
 
 class TextInputWidget(Widget):
-	SIZE = 'w_medium_wide'
+	SIZE = WidgetSizes.w_wide
 	OPTIONS: dict = dict()
 
 

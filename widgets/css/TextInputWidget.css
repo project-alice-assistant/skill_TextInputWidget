@@ -34,6 +34,8 @@
 	min-height: 25px;
 }
 
-.TextInputWidget_input {
-	margin: 1px;
+input[type="text"],
+input[type="password"] {
+	width: 150px;
+	margin: 1px 5px 1px 0;
 }

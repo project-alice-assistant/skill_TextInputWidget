@@ -1,1 +1,32 @@
-{}
+{
+	"en": {
+		"username": "Username",
+		"pin": "Pin",
+		"login": "Login",
+		"identify": "Please identify yourself",
+		"logout": "Logout",
+		"query": "Query",
+		"send": "Send",
+		"siteId": "Site id"
+	},
+	"de": {
+		"username": "Benützername",
+		"pin": "Pincode",
+		"login": "Einloggen",
+		"identify": "Bitte einloggen",
+		"logout": "Ausloggen",
+		"query": "Query",
+		"send": "Senden",
+		"siteId": "Site id"
+	},
+	"fr": {
+		"username": "Utilisateur",
+		"pin": "Pin",
+		"login": "Login",
+		"identify": "Merci de t'identifier",
+		"logout": "Logout",
+		"query": "Demande",
+		"send": "Envoyer",
+		"siteId": "Site id"
+	}
+}

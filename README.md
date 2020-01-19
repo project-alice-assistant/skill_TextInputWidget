@@ -1,5 +1,7 @@
 # TextInputWidget
 
+[![Continous Integration](https://gitlab.com/project-alice-assistant/skills/skill_TextInputWidget/badges/master/pipeline.svg)](https://gitlab.com/project-alice-assistant/skills/skill_TextInputWidget/pipelines/latest)
+
 ### Download
 
 ##### > WGET method

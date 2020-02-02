@@ -12,7 +12,7 @@ wget http://skills.projectalice.ch/TextInputWidget -O ~/ProjectAlice/system/skil
 ### Description
 Creates a widget for text input instead of voice input
 
-- Version: 0.0.2
+- Version: 0.1.0
 - Author: philipp2310
 - Maintainers: maxbachmann, Psycho
 - Alice minimum Version: 1.0.0-a5

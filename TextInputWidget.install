@@ -1,6 +1,7 @@
 {
 	"name": "TextInputWidget",
-	"version": "0.0.1",
+	"version": "0.1.1",
+	"icon": "fab fa-battle-net",
 	"author": "philipp2310",
 	"maintainers": [
 		"maxbachmann",

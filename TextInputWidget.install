@@ -2,7 +2,7 @@
 	"name": "TextInputWidget",
 	"version": "0.1.1",
 	"icon": "fab fa-battle-net",
-	"category": "undefined",
+	"category": "automation",
 	"author": "philipp2310",
 	"maintainers": [
 		"maxbachmann",

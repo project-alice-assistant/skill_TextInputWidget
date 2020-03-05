@@ -2,13 +2,6 @@
 
 [![Continous Integration](https://gitlab.com/project-alice-assistant/skills/skill_TextInputWidget/badges/master/pipeline.svg)](https://gitlab.com/project-alice-assistant/skills/skill_TextInputWidget/pipelines/latest)
 
-### Download
-
-##### > WGET method
-```bash
-wget http://skills.projectalice.ch/TextInputWidget -O ~/ProjectAlice/system/skillInstallTickets/TextInputWidget.install
-```
-
 ### Description
 Creates a widget for text input instead of voice input
 

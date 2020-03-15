@@ -2,7 +2,7 @@
 	"name": "TextInputWidget",
 	"version": "0.1.2",
 	"icon": "fab fa-keyboard",
-	"category": "undefined",
+	"category": "automation",
 	"author": "philipp2310",
 	"maintainers": [
 		"maxbachmann",

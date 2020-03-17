@@ -1,7 +1,7 @@
 {
 	"skill": "TextInputWidget",
 	"icon": "lamp",
-	"description": "Widget for sending text to Alice",
+	"description": "widget pour l'envoi de texte à Alice",
 	"slotTypes": [],
 	"intents": []
 }

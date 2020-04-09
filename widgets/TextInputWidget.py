@@ -4,7 +4,7 @@ from core.base.model.Widget import Widget
 from core.base.model.widgetSizes import WidgetSizes
 
 
-class TextInputWidget(Widget):
+class SimpleCommand(Widget):
 	SIZE = WidgetSizes.w_wide
 	OPTIONS: dict = dict()
 

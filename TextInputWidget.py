@@ -1,12 +1,6 @@
-import sqlite3
-
-from core.base.model.Widget import Widget
-from core.base.model.widgetSizes import WidgetSizes
+from core.base.model.AliceSkill import AliceSkill
 
 
-class TextInputWidget(Widget):
-	SIZE = WidgetSizes.w
-	OPTIONS: dict = dict()
-
-	def __init__(self, data: sqlite3.Row):
-		super().__init__(data)
+class TextInputWidget(AliceSkill):
+	def __init__(self):
+		super().__init__()

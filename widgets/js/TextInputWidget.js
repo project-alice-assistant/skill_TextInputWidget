@@ -1,5 +1,5 @@
 $(function () {
-	let token = '';
+	let savedToken = '';
 
 	function login(user, pin) {
 		let form = new FormData();
@@ -18,7 +18,7 @@ $(function () {
 
 		$.ajax(settings).done(function (response) {
 			let json = JSON.parse(response);
-			token = json['apiToken'];
+			savedToken = json['apiToken'];
 			$('#TextInputWidget_login').hide();
 			$('#TextInputWidget_query').show()
 		});
@@ -52,18 +52,18 @@ $(function () {
 	});
 
 	$('#logout').on('click touchstart', function () {
-		token = '';
+		savedToken = '';
 		$('#TextInputWidget_login').show();
 		$('#TextInputWidget_query').hide();
 	});
 
 	$('#process').on('click touchstart', function () {
-		process(token, $('#siteID').val(), $('#qry').val());
+		process(savedToken, $('#siteID').val(), $('#qry').val());
 	});
 
 	$('#qry').on('keydown', function(e) {
 		if (e.key == "Enter") {
-			process(token, $('#siteID').val(), $('#qry').val());
+			process(savedToken, $('#siteID').val(), $('#qry').val());
 		}
 	});
 

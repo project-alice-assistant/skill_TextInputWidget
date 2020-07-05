@@ -7,7 +7,7 @@ Creates a widget for text input instead of voice input
 
 - Author: philipp2310
 - Maintainers: maxbachmann, Psycho
-- Alice minimum Version: 1.0.0-a5
+- Alice minimum Version: 1.0.0-b1
 - Languages:
   - en
   - de

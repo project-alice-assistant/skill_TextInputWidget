@@ -10,7 +10,7 @@
 				{{ lang.identify }}
 			</div>
 			<div>
-				<input type="text" class="TextInputWidget_input" id="username"/><label for="username">{{ lang.username }}</label>
+				<input type="text" class="TextInputWidget_input" id="username" value="{{ options.defaultUser }}"/><label for="username">{{ lang.username }}</label>
 			</div>
 			<div>
 				<input type="password" class="TextInputWidget_input" id="pin"/><label for="pin">{{ lang.pin }}</label>
@@ -24,7 +24,7 @@
 				<button class="button" id="logout">{{ lang.logout }}</button>
 			</div>
 			<div>
-				<input type="text" class="TextInputWidget_input" id="siteID" value="default" placeholder="default"/><label for="siteID">{{ lang.siteId }}</label>
+				<input type="text" class="TextInputWidget_input" id="siteID" value="{{ options.defaultSiteId }}" placeholder="default"/><label for="siteID">{{ lang.siteId }}</label>
 			</div>
 			<div>
 				<input type="text" class="TextInputWidget_input" id="qry"/><label for="qry">{{ lang.query }}</label>

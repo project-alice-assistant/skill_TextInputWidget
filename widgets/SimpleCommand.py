@@ -1,11 +1,13 @@
 import sqlite3
 
 from core.base.model.Widget import Widget
-from core.base.model.widgetSizes import WidgetSizes
+from core.base.model.WidgetSizes import WidgetSizes
 
 
 class SimpleCommand(Widget):
-	SIZE = WidgetSizes.w_wide
+	DEFAULT_SIZE = WidgetSizes.w_wide
+	DEFAULT_OPTIONS: dict = {'defaultSiteId': '',
+							 'defaultUser': ''}
 	OPTIONS: dict = dict()
 
 

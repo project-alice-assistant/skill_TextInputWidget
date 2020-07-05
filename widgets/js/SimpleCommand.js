@@ -19,6 +19,10 @@ $(function () {
 		$.ajax(settings).done(function (response) {
 			let json = JSON.parse(response);
 			savedToken = json['apiToken'];
+			if(!savedToken){
+				alert(json['message']);
+				return;
+			}
 			$('#TextInputWidget_login').hide();
 			$('#TextInputWidget_query').show()
 		});

@@ -29,12 +29,20 @@ $(function () {
 
 	}
 
-	function process(token, siteID, qry) {
+	function process(token, siteID, qry, sessionId) {
+		let url = "";
+		if( sessionId == "" ){
+			url = '/api/v1.0.1/dialog/process/';
+		} else {
+			console.log(sessionId)
+			url = '/api/v1.0.1/dialog/continue/';
+		}
 		let form = new FormData();
 		form.append('query', qry);
 		form.append('siteId', siteID);
+		form.append('sessionId', sessionId);
 		let settings = {
-			'url': '/api/v1.0.1/dialog/process/',
+			'url': url,
 			'method': 'POST',
 			'timeout': 0,
 			'headers': {
@@ -43,11 +51,12 @@ $(function () {
 			'processData': false,
 			'mimeType': 'multipart/form-data',
 			'contentType': false,
+			'dataType': 'json',
 			'data': form
 		};
 
 		$.ajax(settings).done(function (response) {
-			console.log(response);
+			$('#sessionId').val(response['sessionId']);
 		});
 	}
 
@@ -62,12 +71,12 @@ $(function () {
 	});
 
 	$('#process').on('click touchstart', function () {
-		process(savedToken, $('#siteID').val(), $('#qry').val());
+		process(savedToken, $('#siteID').val(), $('#qry').val(), $('#sessionId').val());
 	});
 
 	$('#qry').on('keydown', function(e) {
 		if (e.key == "Enter") {
-			process(savedToken, $('#siteID').val(), $('#qry').val());
+			process(savedToken, $('#siteID').val(), $('#qry').val(), $('#sessionId').val());
 		}
 	});
 
@@ -76,4 +85,21 @@ $(function () {
 			login($('#username').val(), $('#pin').val());
 		}
 	});
+
+	function onMessage(msg) {
+		//msg to json, get 'text'
+		let json = JSON.parse(msg.payloadString);
+		if (msg.destinationName == 'hermes/dialogueManager/sessionEnded') {
+			if( $('#sessionId').val() == json['sessionId'] ){
+				$('#sessionId').val("");
+			}
+		}
+	}
+
+	function onConnect() {
+		MQTT.subscribe('hermes/dialogueManager/sessionEnded');
+	}
+
+	mqttRegisterSelf(onConnect, 'onConnect');
+	mqttRegisterSelf(onMessage, 'onMessage');
 });

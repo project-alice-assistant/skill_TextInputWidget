@@ -7,7 +7,8 @@
 		"logout": "Logout",
 		"query": "Query",
 		"send": "Send",
-		"siteId": "Site id"
+		"siteId": "Site id",
+		"sessionId": "Session id"
 	},
 	"de": {
 		"username": "Benutzername",
@@ -17,7 +18,8 @@
 		"logout": "Ausloggen",
 		"query": "Query",
 		"send": "Senden",
-		"siteId": "Site id"
+		"siteId": "Site id",
+		"sessionId": "Session id"
 	},
 	"fr": {
 		"username": "Utilisateur",
@@ -27,6 +29,7 @@
 		"logout": "Logout",
 		"query": "Demande",
 		"send": "Envoyer",
-		"siteId": "Site id"
+		"siteId": "Site id",
+		"sessionId": "Session id"
 	}
 }

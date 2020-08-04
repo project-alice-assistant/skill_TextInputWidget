@@ -8,7 +8,7 @@
 		"maxbachmann",
 		"Psycho"
 	],
-	"desc": "Gives you a widget with direct text input for alice",
+	"desc": "Gives you a widget with direct text input for alice.",
 	"aliceMinVersion": "1.0.0-b1",
 	"systemRequirements": [],
 	"pipRequirements": [],

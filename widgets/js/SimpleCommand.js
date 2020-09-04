@@ -1,5 +1,8 @@
 $(function () {
 	let savedToken = '';
+	let topics = [
+		'hermes/dialogueManager/sessionEnded'
+	]
 
 	function login(user, pin) {
 		let form = new FormData();
@@ -86,7 +89,16 @@ $(function () {
 		}
 	});
 
+	function onConnect() {
+		for (const topic in topics) {
+			MQTT.subscribe(topic);
+		}
+	}
+
 	function onMessage(msg) {
+		if (!topics.includes(msg.topic) || !msg.payloadString) {
+			return;
+		}
 		//msg to json, get 'text'
 		let json = JSON.parse(msg.payloadString);
 		if (msg.destinationName == 'hermes/dialogueManager/sessionEnded') {
@@ -94,10 +106,6 @@ $(function () {
 				$('#sessionId').val("");
 			}
 		}
-	}
-
-	function onConnect() {
-		MQTT.subscribe('hermes/dialogueManager/sessionEnded');
 	}
 
 	mqttRegisterSelf(onConnect, 'onConnect');

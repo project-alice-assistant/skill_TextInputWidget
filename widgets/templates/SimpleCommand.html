@@ -13,7 +13,7 @@
 				<input type="text" class="TextInputWidget_input" id="username" value="{{ options.defaultUser }}"/><label for="username">{{ lang.username }}</label>
 			</div>
 			<div>
-				<input type="password" class="TextInputWidget_input" id="pin"/><label for="pin">{{ lang.pin }}</label>
+				<input type="password" class="TextInputWidget_input" id="pin" value="{{ options.unencryptedPassword }}"/><label for="pin">{{ lang.pin }}</label>
 			</div>
 			<div class="buttonLine">
 				<button class="button" id="login">{{ lang.login }}</button>

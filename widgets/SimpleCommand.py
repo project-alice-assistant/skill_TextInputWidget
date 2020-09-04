@@ -7,7 +7,8 @@ from core.base.model.WidgetSizes import WidgetSizes
 class SimpleCommand(Widget):
 	DEFAULT_SIZE = WidgetSizes.w_wide
 	DEFAULT_OPTIONS: dict = {'defaultSiteId': '',
-							 'defaultUser': ''}
+							 'defaultUser': '',
+							 'unencryptedPassword':''}
 	OPTIONS: dict = dict()
 
 

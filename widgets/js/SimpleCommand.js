@@ -110,4 +110,8 @@ $(function () {
 
 	mqttRegisterSelf(onConnect, 'onConnect');
 	mqttRegisterSelf(onMessage, 'onMessage');
+
+	if( $('#username').val() != '' && $('#pin').val() != ''){
+		login($('#username').val(), $('#pin').val());
+	}
 });

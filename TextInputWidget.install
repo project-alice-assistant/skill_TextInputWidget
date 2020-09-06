@@ -1,11 +1,10 @@
 {
 	"name": "TextInputWidget",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"icon": "fas fa-keyboard",
 	"category": "automation",
 	"author": "philipp2310",
 	"maintainers": [
-		"maxbachmann",
 		"Psycho"
 	],
 	"desc": "Gives you a widget with direct text input for alice.",

@@ -37,7 +37,6 @@ $(function () {
 		if( sessionId == "" ){
 			url = '/api/v1.0.1/dialog/process/';
 		} else {
-			console.log(sessionId)
 			url = '/api/v1.0.1/dialog/continue/';
 		}
 		let form = new FormData();
@@ -60,6 +59,33 @@ $(function () {
 
 		$.ajax(settings).done(function (response) {
 			$('#sessionId').val(response['sessionId']);
+		});
+	}
+
+	function getSites(){
+		$.ajax({
+			url: '/home/widget/',
+			data: JSON.stringify({
+				skill: 'TextInputWidget',
+				widget: 'SimpleCommand',
+				func: 'getAliceDevices',
+				param: ''
+			}),
+			contentType: 'application/json',
+			dataType: 'json',
+			type: 'POST'
+		}).done(function (answer) {
+			if('message' in answer){
+				alert(answer['message'])
+				return;
+			}
+			$.each(answer, function (i, val) {
+				if(val['name'] == $('#defaultSiteId').text()){
+					$('#siteID').append(new Option(val['name'], val['siteId'], true, true));
+				} else {
+					$('#siteID').append(new Option(val['name'], val['siteId']));
+				}
+			});
 		});
 	}
 
@@ -110,6 +136,7 @@ $(function () {
 
 	mqttRegisterSelf(onConnect, 'onConnect');
 	mqttRegisterSelf(onMessage, 'onMessage');
+	getSites();
 
 	if( $('#username').val() != '' && $('#pin').val() != ''){
 		login($('#username').val(), $('#pin').val());

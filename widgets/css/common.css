@@ -6,7 +6,7 @@
     min-width: 11em;
 }
 
-.TextInputWidget input {
+.TextInputWidget input, .TextInputWidget select {
 	width: 12em;
     margin: .1em .5em .1em 0;
 }

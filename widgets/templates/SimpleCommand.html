@@ -1,4 +1,5 @@
 <div class="TextInputWidget" id="TextInputWidget">
+	<div class="hidden" id="defaultSiteId">{{ options.defaultSiteId }}</div>
 	<div class="widgetIcons">
 		<div class="widgetIcon">
 			<i class="fas fa-comment-dots" aria-hidden="true"></i>
@@ -27,7 +28,9 @@
 				<input type="text" class="TextInputWidget_input" id="sessionId" value=""/><label for="sessionId">{{ lang.sessionId }}</label>
 			</div>
 			<div>
-				<input type="text" class="TextInputWidget_input" id="siteID" value="{{ options.defaultSiteId }}" placeholder="default"/><label for="siteID">{{ lang.siteId }}</label>
+				<select class="TextInputWidget_input" id="siteID"  name="siteID">
+					<option value="test" selected>test</option>
+				</select><label for="siteID">{{ lang.siteId }}</label>
 			</div>
 			<div>
 				<input type="text" class="TextInputWidget_input" id="qry"/><label for="qry">{{ lang.query }}</label>

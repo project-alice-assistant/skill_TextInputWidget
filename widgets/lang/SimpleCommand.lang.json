@@ -8,7 +8,8 @@
 		"query": "Query",
 		"send": "Send",
 		"siteId": "Site id",
-		"sessionId": "Session id"
+		"sessionId": "Session id",
+		"rememberMe": "Remember me"
 	},
 	"de": {
 		"username": "Benutzername",
@@ -19,7 +20,8 @@
 		"query": "Query",
 		"send": "Senden",
 		"siteId": "Site id",
-		"sessionId": "Session id"
+		"sessionId": "Session id",
+		"rememberMe": "Remember me"
 	},
 	"fr": {
 		"username": "Utilisateur",
@@ -30,6 +32,7 @@
 		"query": "Demande",
 		"send": "Envoyer",
 		"siteId": "Site id",
-		"sessionId": "Session id"
+		"sessionId": "Session id",
+		"rememberMe": "Se souvenir de moi"
 	}
 }

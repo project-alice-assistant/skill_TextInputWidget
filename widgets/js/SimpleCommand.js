@@ -1,5 +1,6 @@
 $(function () {
 	let savedToken = '';
+	let remember = false;
 	let topics = [
 		'hermes/dialogueManager/sessionEnded'
 	]
@@ -24,8 +25,11 @@ $(function () {
 			savedToken = json['apiToken'];
 			if(!savedToken){
 				alert(json['message']);
+				unsetCookie('SimpleCommand_username')
+				unsetCookie('SimpleCommand_pin')
 				return;
 			}
+
 			$('#TextInputWidget_login').hide();
 			$('#TextInputWidget_query').show()
 		});
@@ -33,8 +37,8 @@ $(function () {
 	}
 
 	function process(token, siteID, qry, sessionId) {
-		let url = "";
-		if( sessionId == "" ){
+		let url = '';
+		if(sessionId == ''){
 			url = '/api/v1.0.1/dialog/process/';
 		} else {
 			url = '/api/v1.0.1/dialog/continue/';
@@ -58,7 +62,7 @@ $(function () {
 		};
 
 		$.ajax(settings).done(function (response) {
-			$('#sessionId').val(response['sessionId']);
+		 	$('#sessionId').val(response['sessionId']);
 		});
 	}
 
@@ -90,7 +94,13 @@ $(function () {
 	}
 
 	$('#login').on('click', function () {
-		login($('#username').val(), $('#pin').val());
+		let username = $('#username').val().trim();
+		let pin = $('#pin').val().trim();
+		if (remember) {
+			document.cookie = 'SimpleCommand_username=' + username;
+			document.cookie = 'SimpleCommand_pin=' + pin;
+		}
+		login(username, pin);
 	});
 
 	$('#logout').on('click touchstart', function () {
@@ -104,13 +114,13 @@ $(function () {
 	});
 
 	$('#qry').on('keydown', function(e) {
-		if (e.key == "Enter") {
+		if (e.key == 'Enter') {
 			process(savedToken, $('#siteID').val(), $('#qry').val(), $('#sessionId').val());
 		}
 	});
 
 	$('#pin').on('keydown', function(e) {
-		if (e.key == "Enter") {
+		if (e.key == 'Enter') {
 			login($('#username').val(), $('#pin').val());
 		}
 	});
@@ -134,11 +144,21 @@ $(function () {
 		}
 	}
 
+	$('#rememberMe').on('click touchstart', function() {
+		remember = !!$(this).is(':checked');
+
+		if (!remember) {
+			document.cookie = 'apiToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+		}
+	});
+
 	mqttRegisterSelf(onConnect, 'onConnect');
 	mqttRegisterSelf(onMessage, 'onMessage');
 	getSites();
 
-	if( $('#username').val() != '' && $('#pin').val() != ''){
-		login($('#username').val(), $('#pin').val());
+	let c_username = getCookie('SimpleCommand_username');
+	let c_pin = getCookie('SimpleCommand_pin');
+	if (c_username != '' && c_pin != '') {
+		login(c_username, c_pin);
 	}
 });

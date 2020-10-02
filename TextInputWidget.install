@@ -1,21 +1,21 @@
 {
-	"name": "TextInputWidget",
-	"version": "1.0.8",
-	"icon": "fas fa-keyboard",
-	"category": "automation",
-	"author": "philipp2310",
-	"maintainers": [
-		"Psycho"
-	],
-	"desc": "Gives you a widget with direct text input for alice.",
-	"aliceMinVersion": "1.0.0-b3",
-	"systemRequirements": [],
-	"pipRequirements": [],
-	"conditions": {
-		"lang": [
-			"en",
-			"de",
-			"fr"
-		]
-	}
+    "name": "TextInputWidget",
+    "version": "1.0.9",
+    "icon": "fas fa-keyboard",
+    "category": "automation",
+    "author": "philipp2310",
+    "maintainers": [
+        "Psycho"
+    ],
+    "desc": "Gives you a widget with direct text input for alice.",
+    "aliceMinVersion": "1.0.0-b3",
+    "systemRequirements": [],
+    "pipRequirements": [],
+    "conditions": {
+        "lang": [
+            "en",
+            "de",
+            "fr"
+        ]
+    }
 }

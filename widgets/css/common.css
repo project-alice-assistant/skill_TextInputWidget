@@ -18,3 +18,10 @@
 .TextInputWidget .button{
 	font-size: 1.2em;
 }
+
+.TextInputWidget_body {
+	margin-top: 5px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}

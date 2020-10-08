@@ -126,20 +126,22 @@ $(function () {
 	});
 
 	function onConnect() {
-		for (const topic in topics) {
+		topics.forEach(function(topic) {
 			MQTT.subscribe(topic);
-		}
+		});
 	}
 
 	function onMessage(msg) {
 		if (!topics.includes(msg.topic) || !msg.payloadString) {
 			return;
 		}
-		//msg to json, get 'text'
+
 		let json = JSON.parse(msg.payloadString);
-		if (msg.destinationName == 'hermes/dialogueManager/sessionEnded') {
-			if( $('#sessionId').val() == json['sessionId'] ){
-				$('#sessionId').val("");
+
+		if (msg.topic == 'hermes/dialogueManager/sessionEnded') {
+			let sessionIdField = $('#sessionId');
+			if(sessionIdField.val() == json['sessionId'] ){
+				sessionIdField.val("");
 			}
 		}
 	}

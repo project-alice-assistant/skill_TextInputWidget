@@ -2,8 +2,11 @@
 	padding: .5em;
 }
 .TextInputWidget_body {
+	margin-top: 10px;
 	box-sizing: border-box;
     min-width: 11em;
+	display: flex;
+	justify-content: center;
 }
 
 .TextInputWidget input, .TextInputWidget select {
@@ -17,11 +20,4 @@
 
 .TextInputWidget .button{
 	font-size: 1.2em;
-}
-
-.TextInputWidget_body {
-	margin-top: 5px;
-	display: flex;
-	justify-content: center;
-	align-content: center;
 }

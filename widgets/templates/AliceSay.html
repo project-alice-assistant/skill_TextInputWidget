@@ -1,0 +1,39 @@
+<div class="TextInputWidget" id="TextInputWidget">
+	<div class="hidden" id="defaultSiteId">{{ options.defaultSiteId }}</div>
+	<div class="widgetIcons">
+		<div class="widgetIcon">
+			<i class="fas fa-comment-dots" aria-hidden="true"></i>
+		</div>
+	</div>
+	<div class="TextInputWidget_body">
+		<div id="ASTextInputWidget_login">
+			<div>
+				{{ lang.identify }}
+			</div>
+			<div>
+				<input type="text" class="TextInputWidget_input" id="ASusername" value="{{ options.defaultUser }}"/><label for="username">{{ lang.username }}</label>
+			</div>
+			<div>
+				<input type="password" class="TextInputWidget_input" id="ASpin" value="{{ options.unencryptedPassword }}"/><label for="pin">{{ lang.pin }}</label>
+			</div>
+			<div>
+				<label for="rememberMe">{{ lang.rememberMe }}</label><input type="checkbox" id="ASrememberMe"/>
+			</div>
+			<div class="buttonLine">
+				<button class="button" id="ASlogin">{{ lang.login }}</button>
+			</div>
+		</div>
+		<div id="ASTextInputWidget_query" class="initialHidden">
+			<div>
+				<select class="TextInputWidget_input" id="ASsiteID"  name="siteID">
+				</select><label for="siteID">{{ lang.siteId }}</label>
+			</div>
+			<div>
+				<input type="text" class="TextInputWidget_input" id="ASqry"/><label for="qry">{{ lang.query }}</label>
+			</div>
+			<div class="buttonLine">
+				<button class="button" id="ASaliceSay">{{ lang.send }}</button> <button class="button" id="ASlogout">{{ lang.logout }}</button>
+			</div>
+		</div>
+	</div>
+</div>

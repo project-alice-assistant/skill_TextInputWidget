@@ -1,6 +1,6 @@
 {
     "name": "TextInputWidget",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "icon": "fas fa-keyboard",
     "category": "automation",
     "author": "philipp2310",
@@ -8,7 +8,7 @@
         "Psycho"
     ],
     "desc": "Gives you a widget with direct text input for alice.",
-    "aliceMinVersion": "1.0.0-b3",
+    "aliceMinVersion": "1.0.0-rc1",
     "systemRequirements": [],
     "pipRequirements": [],
     "conditions": {

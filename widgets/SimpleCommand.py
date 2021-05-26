@@ -1,15 +1,16 @@
-import sqlite3
 import json
-
-from core.base.model.Widget import Widget
-from core.base.model.WidgetSizes import WidgetSizes
+import sqlite3
+from core.webui.model.Widget import Widget
+from core.webui.model.WidgetSizes import WidgetSizes
 
 
 class SimpleCommand(Widget):
 	DEFAULT_SIZE = WidgetSizes.w_wide
-	DEFAULT_OPTIONS: dict = {'defaultSiteId': '',
-							 'defaultUser': '',
-							 'unencryptedPassword':''}
+	DEFAULT_OPTIONS: dict = {
+		'defaultSiteId'      : '',
+		'defaultUser'        : '',
+		'unencryptedPassword': ''
+	}
 	OPTIONS: dict = dict()
 
 

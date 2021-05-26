@@ -1,134 +1,64 @@
-$(function () {
-	let savedToken = '';
-	let remember = false;
+class TextInputWidget_AliceSay {
 
-	function login(user, pin) {
-		let form = new FormData();
-		form.append('username', user);
-		form.append('pin', pin);
-
-		let settings = {
-			'url': '/api/v1.0.1/login/',
-			'method': 'POST',
-			'timeout': 0,
-			'processData': false,
-			'mimeType': 'multipart/form-data',
-			'contentType': false,
-			'data': form
-		};
-
-		$.ajax(settings).done(function (response) {
-			let json = JSON.parse(response);
-			savedToken = json['apiToken'];
-			if(!savedToken){
-				alert(json['message']);
-				unsetCookie('SimpleCommand_username')
-				unsetCookie('SimpleCommand_pin')
-				return;
-			}
-
-			$('#ASTextInputWidget_login').hide();
-			$('#ASTextInputWidget_query').show()
-		});
-
+	constructor(uid, widgetId) {
+		this.uid = uid;
+		this.widgetId = widgetId;
+		this.aliceSettings = JSON.parse(window.sessionStorage.aliceSettings);
+		this.myDiv = document.querySelector(`[data-ref="AliceSay_${this.uid}"]`)
+		this.savedToken = '';
+		this.getSites();
+		this.arm();
 	}
 
-	function aliceSay(token, siteID, qry, sessionId) {
-		let url = '/api/v1.0.1/dialog/say/';
-		let form = new FormData();
-		form.append('text', qry);
-		form.append('siteId', siteID);
-		let settings = {
-			'url': url,
-			'method': 'POST',
-			'timeout': 0,
-			'headers': {
-				'auth': token
-			},
-			'processData': false,
-			'mimeType': 'multipart/form-data',
-			'contentType': false,
-			'dataType': 'json',
-			'data': form
-		};
-
-		$.ajax(settings).done(function (response) {
-		 	$('#sessionId').val(response['sessionId']);
-		});
+	arm() {
+		let that = this
+		this.myDiv.querySelector('#ASaliceSay').onclick = function (event) {
+			that.aliceSay(that.myDiv.querySelector('#ASsiteID').value, that.myDiv.querySelector('#ASqry').value)
+		}
 	}
 
-	function getSites(){
-		$.ajax({
-			url: '/home/widget/',
-			data: JSON.stringify({
-				skill: 'TextInputWidget',
-				widget: 'AliceSay',
-				func: 'getAliceDevices',
-				param: ''
-			}),
-			contentType: 'application/json',
-			dataType: 'json',
-			type: 'POST'
-		}).done(function (answer) {
-			if('message' in answer){
-				alert(answer['message'])
-				return;
+	aliceSay(deviceUid, qry) {
+		let that = this
+		let formData = new FormData
+		formData.append('text', 'test')
+		formData.append('deviceUid', deviceUid)
+		fetch(`http://${this.aliceSettings['aliceIp']}:${this.aliceSettings['apiPort']}/api/v1.0.1/dialog/say/`, {
+			method : 'POST',
+			body   : formData,
+			headers: {
+				'auth': localStorage.getItem('apiToken'),
 			}
-			$.each(answer, function (i, val) {
-				if(val['name'] == $('#defaultSiteId').text()){
-					$('#ASsiteID').append(new Option(val['name'], val['siteId'], true, true));
-				} else {
-					$('#ASsiteID').append(new Option(val['name'], val['siteId']));
+		}).then(response => response.json())
+			.then(function (response) {
+				console.log('Message response: ' + response['message'])
+			});
+	}
+
+	getSites() {
+		let that = this
+		fetch(`http://${this.aliceSettings['aliceIp']}:${this.aliceSettings['apiPort']}/api/v1.0.1/widgets/${this.widgetId}/function/getAliceDevices/`, {
+			method : 'POST',
+			body   : '{}',
+			headers: {
+				'auth'        : localStorage.getItem('apiToken'),
+				'content-type': 'application/json'
+			}
+		}).then(response => response.json())
+			.then(function (answer) {
+				if ('message' in answer) {
+					alert(answer['message'])
+					return;
+				}
+				let devices = JSON.parse(answer.data)
+				that.myDiv.querySelector('#ASsiteID').textContent = ''
+				for (let id in devices) {
+					let device = devices[id];
+					if (device['name'] == that.myDiv.querySelector('#defaultSiteId').text) {
+						that.myDiv.querySelector('#ASsiteID').append(new Option(device['name'], device['deviceUid'], true, true));
+					} else {
+						that.myDiv.querySelector('#ASsiteID').append(new Option(device['name'], device['deviceUid']));
+					}
 				}
 			});
-		});
 	}
-
-	$('#ASlogin').on('click', function () {
-		let username = $('#ASusername').val().trim();
-		let pin = $('#ASpin').val().trim();
-		if (remember) {
-			document.cookie = 'SimpleCommand_username=' + username;
-			document.cookie = 'SimpleCommand_pin=' + pin;
-		}
-		login(username, pin);
-	});
-
-	$('#ASlogout').on('click touchstart', function () {
-		savedToken = '';
-		$('#ASTextInputWidget_login').show();
-		$('#ASTextInputWidget_query').hide();
-	});
-
-	$('#ASaliceSay').on('click touchstart', function () {
-		aliceSay(savedToken, $('#ASsiteID').val(), $('#ASqry').val());
-	});
-
-	$('#ASqry').on('keydown', function(e) {
-		if (e.key == 'Enter') {
-			aliceSay(savedToken, $('#ASsiteID').val(), $('#ASqry').val());
-		}
-	});
-
-	$('#ASpin').on('keydown', function(e) {
-		if (e.key == 'Enter') {
-			login($('#ASusername').val(), $('#ASpin').val());
-		}
-	});
-
-	$('#ASrememberMe').on('click touchstart', function() {
-		remember = !!$(this).is(':checked');
-
-		if (!remember) {
-			document.cookie = 'apiToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC;';
-		}
-	});
-
-	getSites();
-
-	let c_username = getCookie('SimpleCommand_username');
-	let c_pin = getCookie('SimpleCommand_pin');
-	if (c_username != '' && c_pin != '') {
-		login(c_username, c_pin);
-	}
-});
+}

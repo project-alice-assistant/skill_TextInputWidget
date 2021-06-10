@@ -1,0 +1,8 @@
+{
+	"defaultSiteId": {
+		"defaultValue": "",
+		"dataType": "string",
+		"isSensitive": false,
+		"description": "The active SiteId when you open this widget."
+	}
+}

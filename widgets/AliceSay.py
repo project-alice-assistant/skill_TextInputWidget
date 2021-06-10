@@ -8,9 +8,7 @@ from core.webui.model.WidgetSizes import WidgetSizes
 class AliceSay(Widget):
 	DEFAULT_SIZE = WidgetSizes.w_wide
 	DEFAULT_OPTIONS: dict = {
-		'defaultSiteId'      : '',
-		'defaultUser'        : '',
-		'unencryptedPassword': ''
+		'defaultSiteId': ''
 	}
 	OPTIONS: dict = dict()
 

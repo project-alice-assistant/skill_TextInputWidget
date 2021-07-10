@@ -20,7 +20,7 @@ class TextInputWidget_AliceSay {
 	aliceSay(deviceUid, qry) {
 		let that = this
 		let formData = new FormData
-		formData.append('text', 'test')
+		formData.append('text', this.myDiv.querySelector('#ASqry').value)
 		formData.append('deviceUid', deviceUid)
 		fetch(`http://${this.aliceSettings['aliceIp']}:${this.aliceSettings['apiPort']}/api/v1.0.1/dialog/say/`, {
 			method : 'POST',
